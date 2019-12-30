@@ -1,0 +1,28 @@
+{
+  "name": "@sammacbeth/whoblocksme",
+  "version": "1.0.0",
+  "description": "Check if a URL is on a blocklist",
+  "main": "build/index.js",
+  "bin": "cli.js",
+  "scripts": {
+    "build": "tsc",
+    "run": "ts-node index.ts"
+  },
+  "author": "Sam Macbeth <sam@cliqz.com>",
+  "license": "MPL-2.0",
+  "dependencies": {
+    "@cliqz/adblocker": "^1.4.1",
+    "@cliqz/url-parser": "^1.1.1",
+    "@types/node": "^13.1.1",
+    "commander": "^4.0.1",
+    "env-paths": "^2.2.0",
+    "fs-extra": "^8.1.0",
+    "listr": "^0.14.3",
+    "node-fetch": "^2.6.0",
+    "ts-node": "^8.5.4"
+  },
+  "devDependencies": {
+    "@types/chrome": "0.0.91",
+    "typescript": "^3.7.4"
+  }
+}
