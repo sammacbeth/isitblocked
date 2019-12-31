@@ -2,6 +2,7 @@ import AdblockerList from "./adblocklist";
 import CliqzAdblocker from "./cliqzadblocker";
 import CliqzAntiTracking from "./cliqzantitracking";
 import DNSBlocklist from "./dns";
+import GhosteryBlocking from "./ghostery";
 
 export const blocklists = {
   cliqzatt: new CliqzAntiTracking(),
@@ -20,7 +21,8 @@ export const blocklists = {
   adguard_dns: new DNSBlocklist("Adguard DNS", [
     "176.103.130.132",
     "176.103.130.134"
-  ])
+  ]),
+  ghostery: new GhosteryBlocking(),
 };
 
 function select(entries: string[]) {
@@ -30,6 +32,7 @@ function select(entries: string[]) {
 export default select([
   "cliqzatt",
   "adb",
+  "ghostery",
   "easylist",
   "easyprivacy",
   "peterlowe",
