@@ -42,7 +42,10 @@ export default class GhosteryBlocking implements IBlocklist {
   }
 }
 
-
+/*
+ * Ghostery matching implementation from ghostery-extension code:
+ * https://github.com/ghostery/ghostery-extension/blob/master/src/utils/matcher.js
+ */
 function _matchesHostPath(roots, src_path) {
 	let root;
 	let paths;

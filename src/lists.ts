@@ -3,6 +3,7 @@ import CliqzAdblocker from "./cliqzadblocker";
 import CliqzAntiTracking from "./cliqzantitracking";
 import DNSBlocklist from "./dns";
 import GhosteryBlocking from "./ghostery";
+import DisconnectBlocking from "./disconnect";
 
 export const blocklists = {
   cliqzatt: new CliqzAntiTracking(),
@@ -23,6 +24,7 @@ export const blocklists = {
     "176.103.130.134"
   ]),
   ghostery: new GhosteryBlocking(),
+  disconnect: new DisconnectBlocking(),
 };
 
 function select(entries: string[]) {
@@ -33,6 +35,7 @@ export default select([
   "cliqzatt",
   "adb",
   "ghostery",
+  "disconnect",
   "easylist",
   "easyprivacy",
   "peterlowe",
