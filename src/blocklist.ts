@@ -3,5 +3,5 @@ export default interface IBlocklist {
   serialize(): Promise<Uint8Array>;
   fetch(): Promise<void>;
   deserialize(buf: Uint8Array): Promise<void>;
-  match(url: string): { match: boolean; info: string };
+  match(url: string): Promise<{ match: boolean; info: string }>;
 }

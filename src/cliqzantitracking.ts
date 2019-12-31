@@ -28,7 +28,7 @@ export default class CliqzAntiTracking implements IBlocklist {
     this.bloomFilter = new PackedBloomFilter(this.buffer);
   }
 
-  match(url: string): { match: boolean; info: string } {
+  async match(url: string): Promise<{ match: boolean; info: string }> {
     const generalDomain = new ImmutableURL(url).generalDomain;
     const isMatch = this.bloomFilter.testSingle(
       `c${md5(generalDomain).substring(0, 16)}`

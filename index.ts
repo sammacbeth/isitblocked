@@ -44,16 +44,16 @@ const tasks = new Listr([{
       return {
         title: list.name,
         task: async () => {
-          const { match, info } = list.match(testUrl);
+          const { match, info } = await list.match(testUrl);
           if (match) {
             throw new Error(info);
           }
         }
       }
-    }), { concurrent: true });
+    }), { concurrent: true, exitOnError: false });
   }
 }])
 
 tasks.run().catch(err => {
-	console.error(err);
+  //
 });
