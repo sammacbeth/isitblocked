@@ -4,7 +4,7 @@ import IBlocklist from "./blocklist";
 import PackedBloomFilter from "./bloom-filter";
 import md5 from "./md5";
 
-const CDN_BASE_URL = "https://cdn.cliqz.com/anti-tracking/whitelist/2";
+const CDN_BASE_URL = "https://cdn.ghostery.com/antitracking/whitelist/2";
 
 export default class CliqzAntiTracking implements IBlocklist {
   name = "Cliqz AntiTracking";
