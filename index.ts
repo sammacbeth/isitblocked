@@ -61,7 +61,7 @@ const tasks = new Listr([
             task: async () => {
               const { match, info } = await list.match(testUrl);
               if (match) {
-                throw new Error(info);
+                throw new Error(info.toString());
               }
             }
           };

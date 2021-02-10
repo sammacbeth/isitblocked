@@ -4,6 +4,7 @@ import CliqzAntiTracking from "./cliqzantitracking";
 import DNSBlocklist from "./dns";
 import GhosteryBlocking from "./ghostery";
 import DisconnectBlocking from "./disconnect";
+import DuckDuckGoBlocking from "./ddg";
 
 export const blocklists = {
   cliqzatt: new CliqzAntiTracking(),
@@ -25,6 +26,7 @@ export const blocklists = {
   ]),
   ghostery: new GhosteryBlocking(),
   disconnect: new DisconnectBlocking(),
+  duckduckgo: new DuckDuckGoBlocking(),
 };
 
 function select(entries: string[]) {
@@ -39,5 +41,6 @@ export default select([
   "easylist",
   "easyprivacy",
   "peterlowe",
-  "adguard_dns"
+  "adguard_dns",
+  "duckduckgo",
 ]);
