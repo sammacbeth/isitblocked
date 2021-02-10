@@ -5,7 +5,7 @@ import { join } from "path";
 import program = require("commander");
 import lists from "./src/lists";
 
-const paths = envPaths("whoblocksme", { suffix: "" });
+const paths = envPaths("isitblocked", { suffix: "" });
 program
   .option("-u --url <url>", "URL to test")
   .option("-h --hostname <hostname>", "Hostname to test")

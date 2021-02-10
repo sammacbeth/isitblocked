@@ -1,12 +1,13 @@
 {
-  "name": "isitblocked",
+  "name": "@sammacbeth/isitblocked",
   "version": "1.0.0",
   "description": "Check if a URL is on a blocklist",
   "main": "build/index.js",
   "bin": "cli.js",
   "scripts": {
     "build": "tsc",
-    "run": "ts-node index.ts"
+    "run": "ts-node index.ts",
+    "test": "mocha --require ts-node/register ./test/*.test.ts"
   },
   "author": "Sam Macbeth <sam@cliqz.com>",
   "license": "MPL-2.0",
@@ -24,7 +25,11 @@
     "ts-node": "^8.5.4"
   },
   "devDependencies": {
+    "@types/chai": "^4.2.14",
     "@types/chrome": "0.0.91",
+    "@types/mocha": "^8.2.0",
+    "chai": "^4.3.0",
+    "mocha": "^8.2.1",
     "typescript": "^3.7.4"
   }
 }

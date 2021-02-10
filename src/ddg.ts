@@ -78,7 +78,6 @@ export default class DuckDuckGoBlocking implements IBlocklist {
       { type }
     );
     if (trackerData) {
-      console.log(JSON.stringify(trackerData));
       trackerData.toString = () =>
         `${trackerData.action}: ${trackerData.reason}`;
     }
