@@ -1,9 +1,11 @@
 {
   "name": "@sammacbeth/isitblocked",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Check if a URL is on a blocklist",
   "main": "build/index.js",
-  "bin": "cli.js",
+  "bin": {
+    "isitblocked": "cli.js"
+  },
   "scripts": {
     "build": "tsc",
     "run": "ts-node index.ts",
