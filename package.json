@@ -17,7 +17,7 @@
     "@cliqz/adblocker": "^1.4.1",
     "@cliqz/url-parser": "^1.1.1",
     "@duckduckgo/privacy-grade": "^1.0.3",
-    "@types/node": "^14.14.25",
+    "@types/node": "^15.3.0",
     "commander": "^4.0.1",
     "env-paths": "^2.2.0",
     "fs-extra": "^9.1.0",
