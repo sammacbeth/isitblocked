@@ -1,6 +1,6 @@
 {
   "name": "@sammacbeth/isitblocked",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Check if a URL is on a blocklist",
   "main": "build/index.js",
   "bin": {
