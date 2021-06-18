@@ -1,6 +1,5 @@
 import fetch from "node-fetch";
 import * as tldts from "tldts-experimental";
-import { ImmutableURL } from "@cliqz/url-parser";
 import { Trackers } from "@duckduckgo/privacy-grade";
 import IBlocklist from "./blocklist";
 import { RequestType } from "@cliqz/adblocker";
@@ -8,6 +7,7 @@ import { RequestType } from "@cliqz/adblocker";
 export default class DuckDuckGoBlocking implements IBlocklist {
   name = "DuckDuckGo";
   engine: any;
+  engineData: string;
 
   constructor() {
     this.engine = new Trackers({
@@ -29,16 +29,7 @@ export default class DuckDuckGoBlocking implements IBlocklist {
   }
 
   async serialize(): Promise<Uint8Array> {
-    return Buffer.from(
-      JSON.stringify({
-        entityList: this.engine.entityList,
-        trackerList: this.engine.trackerList,
-        surrogateList: this.engine.surrogateList,
-        domains: this.engine.domains,
-        cnames: this.engine.cnames,
-      }),
-      "utf-8"
-    );
+    return Buffer.from(this.engineData, "utf-8");
   }
   async fetch(): Promise<void> {
     const tds = await (
@@ -49,21 +40,21 @@ export default class DuckDuckGoBlocking implements IBlocklist {
     const surrogates = await (
       await fetch("https://duckduckgo.com/contentblocking.js?l=surrogates")
     ).text();
-    this.engine.setLists([
+    this.engineData = JSON.stringify([
       { name: "tds", data: tds },
       { name: "surrogates", data: surrogates },
-    ]);
+    ])
+    this.engine.setLists(JSON.parse(this.engineData));
   }
   async deserialize(buf: Uint8Array): Promise<void> {
-    const lists = JSON.parse(Buffer.from(buf).toString("utf-8"));
-    Object.assign(this.engine, lists);
+    this.engineData = Buffer.from(buf).toString("utf-8");
+    this.engine.setLists(JSON.parse(this.engineData));
   }
   async match(
     url: string,
     sourceUrl: string,
     type: RequestType
   ): Promise<{ match: boolean; info: { toString(): string } }> {
-    const parsedUrl = new ImmutableURL(url);
     const trackerData = this.engine.getTrackerData(url, sourceUrl, { type });
     if (trackerData) {
       trackerData.toString = () =>
