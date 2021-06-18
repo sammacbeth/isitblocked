@@ -37,6 +37,21 @@ $ npx @sammacbeth/isitblocked -u "https://www.google-analytics.com/analytics.js"
       → redirect: matched rule - surrogate
 ```
 
+Full options:
+```bash
+Usage: index.ts [options]
+
+Options:
+  -u --url <url>            URL to test
+  -h --hostname <hostname>  Hostname to test
+  -s --source <source>      Source (first party) URL (default: "https://www.example.com")
+  -t --type <type>          Request type (e.g. 'script', 'xmlhttprequest'
+  --no-fetch                Do not fetch lists automatically
+  --no-update               Do not update out-of-date lists
+  --no-cache                Do not use cached lists
+  -h, --help                output usage information
+```
+
 ## License
 
 MIT

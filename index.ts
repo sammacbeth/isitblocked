@@ -4,13 +4,17 @@ import fs = require("fs-extra");
 import { join } from "path";
 import program = require("commander");
 import lists from "./src/lists";
+import { guessTypeFromPath } from "./src/util"
 
 const paths = envPaths("isitblocked", { suffix: "" });
 program
   .option("-u --url <url>", "URL to test")
   .option("-h --hostname <hostname>", "Hostname to test")
+  .option("-s --source <source>", "Source (first party) URL", "https://www.example.com")
+  .option("-t --type <type>", "Request type (e.g. 'script', 'xmlhttprequest'")
   .option("--no-fetch", "Do not fetch lists automatically", false)
-  .option("--no-update", "Do not update out-of-date lists", false);
+  .option("--no-update", "Do not update out-of-date lists", false)
+  .option("--no-cache", "Do not use cached lists", false);
 program.parse(process.argv);
 
 if (!program.url && !program.hostname) {
@@ -32,7 +36,7 @@ const loadLists = new Listr(
           throw new Error("List not available locally, need to fetch");
         }
         const shouldUpdate =
-          !exists ||
+          !exists || !program.cache ||
           (program.update && (await fs.stat(fileName)).mtime < expiry);
         if (shouldUpdate) {
           await list.fetch();
@@ -59,7 +63,7 @@ const tasks = new Listr([
           return {
             title: list.name,
             task: async () => {
-              const { match, info } = await list.match(testUrl);
+              const { match, info } = await list.match(testUrl, program.source, program.type || guessTypeFromPath(testUrl));
               if (match) {
                 throw new Error(info.toString());
               }
