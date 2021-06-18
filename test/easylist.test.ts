@@ -16,4 +16,13 @@ describe("easylist matching", () => {
     );
     expect(result.match).to.be.true;
   });
+
+  it("does not match $third-party rule when source matches", async () => {
+    const result = await list.match(
+      "https://244631299-prod.rfksrv.com/rfk/js/12359-244631299/init.js",
+      "https://www.rfksrv.com",
+      "script"
+    );
+    expect(result.match).to.be.false;
+  })
 });
