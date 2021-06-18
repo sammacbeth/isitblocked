@@ -3,16 +3,7 @@ import * as tldts from "tldts-experimental";
 import { ImmutableURL } from "@cliqz/url-parser";
 import { Trackers } from "@duckduckgo/privacy-grade";
 import IBlocklist from "./blocklist";
-
-function guessTypeFromPath(pathname: string) {
-  if (pathname.endsWith(".js")) {
-    return "script";
-  }
-  if (pathname.endsWith(".css")) {
-    return "stylesheet";
-  }
-  return "xmlhttprequest";
-}
+import { RequestType } from "@cliqz/adblocker";
 
 export default class DuckDuckGoBlocking implements IBlocklist {
   name = "DuckDuckGo";
@@ -68,15 +59,12 @@ export default class DuckDuckGoBlocking implements IBlocklist {
     Object.assign(this.engine, lists);
   }
   async match(
-    url: string
+    url: string,
+    sourceUrl: string,
+    type: RequestType
   ): Promise<{ match: boolean; info: { toString(): string } }> {
     const parsedUrl = new ImmutableURL(url);
-    const type = guessTypeFromPath(parsedUrl.pathname);
-    const trackerData = this.engine.getTrackerData(
-      url,
-      "https://example.com/",
-      { type }
-    );
+    const trackerData = this.engine.getTrackerData(url, sourceUrl, { type });
     if (trackerData) {
       trackerData.toString = () =>
         `${trackerData.action}: ${trackerData.reason}`;

@@ -10,7 +10,9 @@ describe("easylist matching", () => {
 
   it("matches $third-party rules (#76)", async () => {
     const result = await list.match(
-      "https://244631299-prod.rfksrv.com/rfk/js/12359-244631299/init.js"
+      "https://244631299-prod.rfksrv.com/rfk/js/12359-244631299/init.js",
+      "https://www.example.com",
+      "script"
     );
     expect(result.match).to.be.true;
   });

@@ -4,6 +4,7 @@ import fs = require("fs-extra");
 import { join } from "path";
 import program = require("commander");
 import lists from "./src/lists";
+import { guessTypeFromPath } from "./src/util"
 
 const paths = envPaths("isitblocked", { suffix: "" });
 program
@@ -59,7 +60,7 @@ const tasks = new Listr([
           return {
             title: list.name,
             task: async () => {
-              const { match, info } = await list.match(testUrl);
+              const { match, info } = await list.match(testUrl, program.source, program.type || guessTypeFromPath(testUrl));
               if (match) {
                 throw new Error(info.toString());
               }

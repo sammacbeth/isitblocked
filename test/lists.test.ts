@@ -1,6 +1,5 @@
 import { expect } from "chai";
 import { describe, before, it } from "mocha";
-import IBlocklist from "../src/blocklist";
 
 import { blocklists } from "../src/lists";
 
@@ -16,12 +15,12 @@ listsToTest.forEach((name) => {
       before(() => list.fetch());
 
       it("matches a tracker URL", async () => {
-        const result = await list.match(TRACKER_URL);
+        const result = await list.match(TRACKER_URL, NOT_TRACKER_URL, 'script');
         expect(result.match).to.be.true;
       });
 
       it("does not match a non-tracker URL", async () => {
-        const result = await list.match(NOT_TRACKER_URL);
+        const result = await list.match(NOT_TRACKER_URL, NOT_TRACKER_URL, 'script');
         expect(result.match).to.be.false;
       });
 
@@ -33,12 +32,12 @@ listsToTest.forEach((name) => {
         });
 
         it("matches a tracker URL", async () => {
-          const result = await list.match(TRACKER_URL);
+          const result = await list.match(TRACKER_URL, NOT_TRACKER_URL, 'script');
           expect(result.match).to.be.true;
         });
 
         it("does not match a non-tracker URL", async () => {
-          const result = await list.match(NOT_TRACKER_URL);
+          const result = await list.match(NOT_TRACKER_URL, NOT_TRACKER_URL, 'script');
           expect(result.match).to.be.false;
         });
       });

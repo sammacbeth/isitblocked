@@ -1,4 +1,4 @@
-import { FiltersEngine, Request } from "@cliqz/adblocker";
+import { FiltersEngine, Request, RequestType } from "@cliqz/adblocker";
 import fetch from "node-fetch";
 import IBlocklist from "./blocklist";
 
@@ -18,10 +18,12 @@ export default class AdblockerList implements IBlocklist {
     this.engine = FiltersEngine.deserialize(buf);
   }
 
-  async match(url: string): Promise<{ match: boolean; info: string }> {
+  async match(url: string, sourceUrl: string, type: RequestType): Promise<{ match: boolean; info: string }> {
     const { match: isMatch, filter } = this.engine.match(
       Request.fromRawDetails({
-        url
+        url,
+        sourceUrl,
+        type,
       })
     );
     const info = isMatch && `Filter match: ${filter.hostname || ''}${filter.filter || ''}`;
