@@ -3,8 +3,8 @@ import Listr = require("listr");
 import fs = require("fs-extra");
 import { join } from "path";
 import program = require("commander");
+import guessUrlType from '@remusao/guess-url-type';
 import lists from "./src/lists";
-import { guessTypeFromPath } from "./src/util"
 
 const paths = envPaths("isitblocked", { suffix: "" });
 program
@@ -63,7 +63,7 @@ const tasks = new Listr([
           return {
             title: list.name,
             task: async () => {
-              const { match, info } = await list.match(testUrl, program.source, program.type || guessTypeFromPath(testUrl));
+              const { match, info } = await list.match(testUrl, program.source, program.type || guessUrlType(testUrl));
               if (match) {
                 throw new Error(info.toString());
               }
