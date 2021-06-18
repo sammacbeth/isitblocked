@@ -10,8 +10,11 @@ const paths = envPaths("isitblocked", { suffix: "" });
 program
   .option("-u --url <url>", "URL to test")
   .option("-h --hostname <hostname>", "Hostname to test")
+  .option("-s --source <source>", "Source (first party) URL", "https://www.example.com")
+  .option("-t --type <type>", "Request type (e.g. 'script', 'xmlhttprequest'")
   .option("--no-fetch", "Do not fetch lists automatically", false)
-  .option("--no-update", "Do not update out-of-date lists", false);
+  .option("--no-update", "Do not update out-of-date lists", false)
+  .option("--no-cache", "Do not use cached lists", false);
 program.parse(process.argv);
 
 if (!program.url && !program.hostname) {
@@ -33,7 +36,7 @@ const loadLists = new Listr(
           throw new Error("List not available locally, need to fetch");
         }
         const shouldUpdate =
-          !exists ||
+          !exists || !program.cache ||
           (program.update && (await fs.stat(fileName)).mtime < expiry);
         if (shouldUpdate) {
           await list.fetch();
