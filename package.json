@@ -18,7 +18,7 @@
     "@cliqz/url-parser": "^1.1.1",
     "@duckduckgo/privacy-grade": "^1.0.3",
     "@remusao/guess-url-type": "^1.2.1",
-    "@types/node": "^16.11.6",
+    "@types/node": "^17.0.10",
     "commander": "^4.0.1",
     "env-paths": "^2.2.0",
     "fs-extra": "^10.0.0",
