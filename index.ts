@@ -1,8 +1,8 @@
-import envPaths = require("env-paths");
-import Listr = require("listr");
-import fs = require("fs-extra");
+import envPaths from "env-paths";
+import Listr from "listr";
+import fs from "fs-extra";
 import { join } from "path";
-import program = require("commander");
+import program from "commander";
 import guessUrlType from '@remusao/guess-url-type';
 import lists from "./src/lists";
 
