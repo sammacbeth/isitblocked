@@ -9,8 +9,8 @@ import IBlocklist from './src/blocklist';
 const DEFAULT_SOURCE_URL = 'https://www.example.com/'
 
 function blocklistMatcher(v: BlocklistVersion, engine: IBlocklist) {
-    return async (url: string, sourceUrl: string, type: RequestType) => {
-        const result = await engine.match(url, sourceUrl, type)
+    return (url: string, sourceUrl: string, type: RequestType) => {
+        const result = engine.match(url, sourceUrl, type)
         return {
             blocked: result.match,
             version: v.date,
@@ -48,14 +48,37 @@ app.get('/test', async (req, res) => {
     const sourceUrl = (req.query.sourceUrl as string) || DEFAULT_SOURCE_URL
     const type = (req.query.type as RequestType) || guessUrlType(url)
 
-    console.log(url, sourceUrl, type)
+    console.log('/test', url, sourceUrl, type)
     const blocklists = await loadBlocklists
     try {
         res.status(200).json({
             results: {
-                ddg: await blocklists.ddg[0](url, sourceUrl, type),
-                easylist: await blocklists.easylist[0](url, sourceUrl, type),
-                easyprivacy: await blocklists.easyprivacy[0](url, sourceUrl, type),
+                ddg: blocklists.ddg[0](url, sourceUrl, type),
+                easylist: blocklists.easylist[0](url, sourceUrl, type),
+                easyprivacy: blocklists.easyprivacy[0](url, sourceUrl, type),
+            }
+        }).end()
+    } catch (e) {
+        res.status(400).end()
+    }
+})
+
+app.get('/history', async (req, res) => {
+    const url = req.query.url as string
+    const sourceUrl = (req.query.sourceUrl as string) || DEFAULT_SOURCE_URL
+    const type = (req.query.type as RequestType) || guessUrlType(url)
+
+    console.log('/history', url, sourceUrl, type)
+    const blocklists = await loadBlocklists
+    try {
+        res.status(200).json({
+            url,
+            sourceUrl,
+            type,
+            results: {
+                ddg: blocklists.ddg.map(match => match(url, sourceUrl, type)),
+                easylist: blocklists.easylist.map(match => match(url, sourceUrl, type)),
+                easyprivacy: blocklists.easyprivacy.map(match => match(url, sourceUrl, type)),
             }
         }).end()
     } catch (e) {
