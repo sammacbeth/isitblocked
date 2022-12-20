@@ -18,7 +18,7 @@ export default class AdblockerList implements IBlocklist {
     this.engine = FiltersEngine.deserialize(buf);
   }
 
-  async match(url: string, sourceUrl: string, type: RequestType): Promise<{ match: boolean; info: string }> {
+  match(url: string, sourceUrl: string, type: RequestType): { match: boolean; info: string } {
     const { match: isMatch, filter } = this.engine.match(
       Request.fromRawDetails({
         url,

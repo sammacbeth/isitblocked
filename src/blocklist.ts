@@ -9,5 +9,5 @@ export default interface IBlocklist {
     url: string,
     sourceUrl: string,
     type: RequestType
-  ): Promise<{ match: boolean; info: { toString(): string } }>;
+  ): { match: boolean; info: { toString(): string } };
 }

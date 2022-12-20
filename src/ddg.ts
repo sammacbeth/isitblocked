@@ -48,11 +48,11 @@ export default class DuckDuckGoBlocking implements IBlocklist {
     this.engineData = Buffer.from(buf).toString("utf-8");
     this.engine.setLists(JSON.parse(this.engineData));
   }
-  async match(
+  match(
     url: string,
     sourceUrl: string,
     type: RequestType
-  ): Promise<{ match: boolean; info: { toString(): string } }> {
+  ): { match: boolean; info: { toString(): string } } {
     const trackerData = this.engine.getTrackerData(url, sourceUrl, { type });
     if (trackerData) {
       trackerData.toString = () =>

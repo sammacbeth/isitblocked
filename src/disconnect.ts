@@ -53,7 +53,7 @@ export default class DisconnectBlocking implements IBlocklist {
   async deserialize(buf: Uint8Array): Promise<void> {
     this.db = JSON.parse(Buffer.from(buf).toString("utf-8"));
   }
-  async match(url: string): Promise<{ match: boolean; info: string }> {
+  match(url: string): { match: boolean; info: string } {
     const { hostname } = new ImmutableURL(url);
     const parts = hostname.split(".").reverse();
     let root = this.db;
