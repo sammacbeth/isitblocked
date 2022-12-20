@@ -1,6 +1,7 @@
 import { join, basename } from 'path'
 import fs from 'fs'
 import fetch from "node-fetch";
+import { getVersions } from './src/versions';
 
 async function wget(url: string, path: string) {
     console.log(`Downloading ${url} to ${path}`)
@@ -14,14 +15,14 @@ async function wget(url: string, path: string) {
 
 async function fetchDDGLists() {
     const ddgPath = join('.', 'blocklists', 'ddg')
-    const ddgVersions = JSON.parse(await fs.promises.readFile(join(ddgPath, 'versions.json'), 'utf-8'))
+    const ddgVersions = await getVersions('ddg')
     const surrogatesFile = join(ddgPath, 'surrogates.txt')
     if (!fs.existsSync(surrogatesFile)) {
         await wget("https://duckduckgo.com/contentblocking.js?l=surrogates", surrogatesFile)
     }
 
-    for (const { date, url } of ddgVersions) {
-        const tdsFile = join(ddgPath, `${date}-${basename(url)}`)
+    for (const { url, localPath } of ddgVersions) {
+        const tdsFile = join('.', localPath)
         if (!fs.existsSync(tdsFile)) {
             await wget(url, tdsFile)
         }
@@ -30,16 +31,13 @@ async function fetchDDGLists() {
 
 async function fetchEasylists() {
     const easylistPath = join('.', 'blocklists', 'easylist')
-    const easyListVersions = JSON.parse(await fs.promises.readFile(join(easylistPath, 'versions.json'), 'utf-8'))
 
-    for (const { date, ref } of easyListVersions) {
-        const easylistFile = join(easylistPath, `${date}-easylist.txt`)
-        const easyprivacyFile = join(easylistPath, `${date}-easyprivacy.txt`)
-        if (!fs.existsSync(easylistFile)) {
-            await wget(`https://github.com/easylist/easylist/blob/${ref}/easylist.txt?raw=true`, easylistFile)
-        }
-        if (!fs.existsSync(easyprivacyFile)) {
-            await wget(`https://github.com/easylist/easylist/blob/${ref}/easyprivacy.txt?raw=true`, easyprivacyFile)
+    for (const versions of [await getVersions('easylist'), await getVersions('easyprivacy')]) {
+        for (const { url, localPath } of versions) {
+            const filePath = join('.', localPath)
+            if (!fs.existsSync(filePath)) {
+                await wget(url, filePath)
+            }
         }
     }
 }

@@ -9,7 +9,9 @@ export default class DuckDuckGoBlocking implements IBlocklist {
   engine: any;
   engineData: string;
 
-  constructor() {
+  constructor(
+      private tdsUrl = "https://staticcdn.duckduckgo.com/trackerblocking/v3/tds.json", 
+      private surrogatesUrl = "https://duckduckgo.com/contentblocking.js?l=surrogates") {
     this.engine = new Trackers({
       tldjs: tldts,
       utils: {
@@ -33,13 +35,9 @@ export default class DuckDuckGoBlocking implements IBlocklist {
   }
   async fetch(): Promise<void> {
     const tds = await (
-      await fetch(
-        "https://staticcdn.duckduckgo.com/trackerblocking/v2.1/tds.json"
-      )
+      await fetch(this.tdsUrl)
     ).json();
-    const surrogates = await (
-      await fetch("https://duckduckgo.com/contentblocking.js?l=surrogates")
-    ).text();
+    const surrogates = await (await fetch(this.surrogatesUrl)).text();
     this.engineData = JSON.stringify([
       { name: "tds", data: tds },
       { name: "surrogates", data: surrogates },
