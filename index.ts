@@ -31,13 +31,13 @@ const loadLists = new Listr(
       title: `${list.name}`,
       task: async () => {
         const fileName = join(paths.data, list.name);
-        const exists = await fs.exists(fileName);
+        const exists = fs.existsSync(fileName);
         if (!exists && !program.fetch) {
           throw new Error("List not available locally, need to fetch");
         }
         const shouldUpdate =
           !exists || !program.cache ||
-          (program.update && (await fs.stat(fileName)).mtime < expiry);
+          (program.update && (await fs.stat(fileName)).mtime.getTime() < expiry);
         if (shouldUpdate) {
           await list.fetch();
           await fs.mkdirp(paths.data);

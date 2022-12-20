@@ -1,5 +1,6 @@
-import express from 'express'
+import express from 'express';
 import guessUrlType, { RequestType } from '@remusao/guess-url-type';
+import cors from 'cors';
 
 import DDG from './src/ddg';
 import { BlocklistVersion, getVersions } from './src/versions';
@@ -12,8 +13,8 @@ function blocklistMatcher(v: BlocklistVersion, engine: IBlocklist) {
     return (url: string, sourceUrl: string, type: RequestType) => {
         const result = engine.match(url, sourceUrl, type)
         return {
-            blocked: result.match,
             version: v.date,
+            blocked: result.match,
             info: result.info
         }
     }
@@ -42,6 +43,9 @@ const loadBlocklists = (async () => {
 const app = express()
 const port = 9000
 app.use('/blocklists', express.static('blocklists'))
+app.use(cors({
+    origin: '*'
+}));
 
 app.get('/test', async (req, res) => {
     const url = req.query.url as string

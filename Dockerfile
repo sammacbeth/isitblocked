@@ -9,7 +9,7 @@ RUN npm ci
 COPY blocklists /home/node/app/blocklists
 COPY *.ts *.js *.json /home/node/app/
 COPY src /home/node/app/src
-RUN ls -lah /home/node/app/src/
+RUN npm run build
 
-CMD ["npm", "run", "server"]
+CMD ["node", "build/server.js"]
 EXPOSE 9000
