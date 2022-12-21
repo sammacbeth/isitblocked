@@ -1,7 +1,6 @@
 import AdblockerList from "./adblocklist";
 import CliqzAdblocker from "./cliqzadblocker";
 import CliqzAntiTracking from "./cliqzantitracking";
-import DNSBlocklist from "./dns";
 import GhosteryBlocking from "./ghostery";
 import DisconnectBlocking from "./disconnect";
 import DuckDuckGoBlocking from "./ddg";
@@ -21,10 +20,6 @@ export const blocklists: { [name: string]: () => IBlocklist } = {
   peterlowe: () => new AdblockerList("peterlowe", [
     "https://pgl.yoyo.org/adservers/serverlist.php?hostformat=adblockplus&showintro=0&mimetype=plaintext"
   ]),
-  adguard_dns: () => new DNSBlocklist("Adguard DNS", [
-    "176.103.130.132",
-    "176.103.130.134"
-  ]),
   ghostery: () => new GhosteryBlocking(),
   disconnect: () => new DisconnectBlocking(),
   duckduckgo: () => new DuckDuckGoBlocking(),
@@ -42,6 +37,5 @@ export default select([
   "easylist",
   "easyprivacy",
   "peterlowe",
-  "adguard_dns",
   "duckduckgo",
 ]);

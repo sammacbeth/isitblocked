@@ -1,2 +1,4 @@
 node_modules/
 build/
+blocklists/ddg/*
+blocklists/easylist/*.txt
