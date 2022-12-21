@@ -15,7 +15,7 @@ function blocklistMatcher(v: BlocklistVersion, engine: IBlocklist) {
         const result = engine.match(url, sourceUrl, type)
         return {
             version: v.date,
-            blocked: result.match,
+            match: result.match,
             info: result.info
         }
     }
@@ -57,6 +57,9 @@ app.get('/test', async (req, res) => {
     const blocklists = await loadBlocklists
     try {
         res.status(200).json({
+            url,
+            sourceUrl,
+            type,
             results: {
                 ddg: blocklists.ddg[0](url, sourceUrl, type),
                 easylist: blocklists.easylist[0](url, sourceUrl, type),
