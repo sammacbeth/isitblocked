@@ -56,16 +56,18 @@ app.get('/test', async (req, res) => {
     console.log('/test', url, sourceUrl, type)
     const blocklists = await loadBlocklists
     try {
-        res.status(200).json({
-            url,
-            sourceUrl,
-            type,
-            results: {
-                ddg: blocklists.ddg[0](url, sourceUrl, type),
-                easylist: blocklists.easylist[0](url, sourceUrl, type),
-                easyprivacy: blocklists.easyprivacy[0](url, sourceUrl, type),
-            }
-        }).end()
+        res.setHeader('Cache-Control', 'public, max-age=86400')
+            .status(200)
+            .json({
+                url,
+                sourceUrl,
+                type,
+                results: {
+                    ddg: blocklists.ddg[0](url, sourceUrl, type),
+                    easylist: blocklists.easylist[0](url, sourceUrl, type),
+                    easyprivacy: blocklists.easyprivacy[0](url, sourceUrl, type),
+                }
+            }).end()
     } catch (e) {
         res.status(400).end()
     }
@@ -79,19 +81,25 @@ app.get('/history', async (req, res) => {
     console.log('/history', url, sourceUrl, type)
     const blocklists = await loadBlocklists
     try {
-        res.status(200).json({
-            url,
-            sourceUrl,
-            type,
-            results: {
-                ddg: blocklists.ddg.map(match => match(url, sourceUrl, type)),
-                easylist: blocklists.easylist.map(match => match(url, sourceUrl, type)),
-                easyprivacy: blocklists.easyprivacy.map(match => match(url, sourceUrl, type)),
-            }
-        }).end()
+        res.setHeader('Cache-Control', 'public, max-age=86400')
+            .status(200)
+            .json({
+                url,
+                sourceUrl,
+                type,
+                results: {
+                    ddg: blocklists.ddg.map(match => match(url, sourceUrl, type)),
+                    easylist: blocklists.easylist.map(match => match(url, sourceUrl, type)),
+                    easyprivacy: blocklists.easyprivacy.map(match => match(url, sourceUrl, type)),
+                }
+            }).end()
     } catch (e) {
         res.status(400).end()
     }
+})
+
+app.get('/', (req, res) => {
+    res.redirect('https://observablehq.com/@sammacbeth/isitblocked')
 })
 
 app.listen(port)

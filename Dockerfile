@@ -11,5 +11,6 @@ COPY *.ts *.js *.json /home/node/app/
 COPY src /home/node/app/src
 RUN npm run build
 
+ENV NODE_ENV=production
 CMD ["node", "build/server.js"]
 EXPOSE 9000
