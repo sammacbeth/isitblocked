@@ -1,6 +1,7 @@
 import express from 'express';
-import guessUrlType, { RequestType } from '@remusao/guess-url-type';
+import guessUrlType from '@remusao/guess-url-type';
 import cors from 'cors';
+import { RequestType } from '@cliqz/adblocker';
 
 import DDG from './src/ddg';
 import { BlocklistVersion, getVersions } from './src/versions';
