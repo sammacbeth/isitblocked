@@ -37,6 +37,5 @@ export default select([
   "easylist",
   "easyprivacy",
   "peterlowe",
-  "adguard_dns",
   "duckduckgo",
 ]);
