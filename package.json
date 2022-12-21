@@ -1,6 +1,6 @@
 {
   "name": "@sammacbeth/isitblocked",
-  "version": "2.1.4",
+  "version": "3.0.0",
   "description": "Check if a URL is on a blocklist",
   "main": "build/index.js",
   "bin": {
@@ -10,7 +10,8 @@
     "build": "tsc",
     "run": "ts-node index.ts",
     "server": "ts-node server.ts",
-    "test": "mocha --require ts-node/register ./test/*.test.ts"
+    "test": "mocha --require ts-node/register ./test/*.test.ts",
+    "download": "ts-node download.ts"
   },
   "author": "Sam Macbeth <sam@cliqz.com>",
   "license": "MPL-2.0",
