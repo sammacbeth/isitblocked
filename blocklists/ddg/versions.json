@@ -1,6 +1,12 @@
 [{
+    "date": "20230209",
+    "url": "https://staticcdn.duckduckgo.com/trackerblocking/v4/tds.json"
+}, {
+    "date": "20230116",
+    "url": "https://staticcdn.duckduckgo.com/trackerblocking/v3/tds-ceb6c4739f50ba075f082c4c41084690.json"
+}, {
     "date": "20220922",
-    "url": "https://staticcdn.duckduckgo.com/trackerblocking/v3/tds.json"
+    "url": "https://staticcdn.duckduckgo.com/trackerblocking/v3/tds-26f3dfbb234cfd28a47af59b497e301c.json"
 }, {
     "date": "20220921",
     "url": "https://staticcdn.duckduckgo.com/trackerblocking/v3/tds-52114358201666ec889a7bc5276b395a.json"
