@@ -18,7 +18,7 @@
   "dependencies": {
     "@cliqz/adblocker": "^1.4.1",
     "@cliqz/url-parser": "^1.1.1",
-    "@duckduckgo/privacy-grade": "^1.0.3",
+    "@duckduckgo/privacy-grade": "github:duckduckgo/privacy-grade#2.1.2",
     "@remusao/guess-url-type": "^1.2.1",
     "commander": "^4.0.1",
     "cors": "^2.8.5",
