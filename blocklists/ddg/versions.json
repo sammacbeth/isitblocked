@@ -1,6 +1,9 @@
 [{
-    "date": "20230209",
+    "date": "20230321",
     "url": "https://staticcdn.duckduckgo.com/trackerblocking/v4/tds.json"
+}, {
+    "date": "20230209",
+    "url": "https://staticcdn.duckduckgo.com/trackerblocking/v4/tds-dce178730cb2f02d125e598b5175a9d2.json"
 }, {
     "date": "20230116",
     "url": "https://staticcdn.duckduckgo.com/trackerblocking/v3/tds-ceb6c4739f50ba075f082c4c41084690.json"
