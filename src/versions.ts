@@ -7,6 +7,10 @@ export type BlocklistVersion = {
     localPath: string;
 }
 
+export function getVersionsFilePath(blocklist: 'ddg' | 'easylist' | 'easyprivacy'): string {
+    return join('.', 'blocklists', blocklist, 'versions.json')
+}
+
 export async function getVersions(blocklist: 'ddg' | 'easylist' | 'easyprivacy'): Promise<BlocklistVersion[]> {
     if (blocklist === 'ddg') {
         const ddgPath = join('.', 'blocklists', 'ddg')

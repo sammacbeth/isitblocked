@@ -1,64 +1,94 @@
-[{
-    "date": "20230321",
-    "url": "https://staticcdn.duckduckgo.com/trackerblocking/v4/tds.json"
-}, {
-    "date": "20230209",
-    "url": "https://staticcdn.duckduckgo.com/trackerblocking/v4/tds-dce178730cb2f02d125e598b5175a9d2.json"
-}, {
-    "date": "20230116",
-    "url": "https://staticcdn.duckduckgo.com/trackerblocking/v3/tds-ceb6c4739f50ba075f082c4c41084690.json"
-}, {
-    "date": "20220922",
-    "url": "https://staticcdn.duckduckgo.com/trackerblocking/v3/tds-26f3dfbb234cfd28a47af59b497e301c.json"
-}, {
-    "date": "20220921",
-    "url": "https://staticcdn.duckduckgo.com/trackerblocking/v3/tds-52114358201666ec889a7bc5276b395a.json"
-}, {
-    "date": "20220920",
-    "url": "https://staticcdn.duckduckgo.com/trackerblocking/v3/tds-cdeb8f38faa7bf799a147ad8ed98128b.json"
-}, {
-    "date": "20220803",
-    "url": "https://staticcdn.duckduckgo.com/trackerblocking/v3/tds-4cb6f7deff3b482fd67708c28a2e0357.json"
-}, {
-    "date": "20220630",
-    "url": "https://staticcdn.duckduckgo.com/trackerblocking/v2.1/tds-4dab34f32a36c080d8b9b1135d13335e.json"
-}, {
-    "date": "20220609",
-    "url": "https://staticcdn.duckduckgo.com/trackerblocking/v2.1/tds-ceb53b2deac7d7fa24590006d805deaa.json"
-},  {
-    "date": "20220525",
-    "url": "https://staticcdn.duckduckgo.com/trackerblocking/v2.1/tds-468771c374ddb7ee8bd4faa83e01050a.json"
-},  {
-    "date": "20220509",
-    "url": "https://staticcdn.duckduckgo.com/trackerblocking/v2.1/tds-81825cc44f95ae42865a2d6132ecc7ae.json"
-},  {
-    "date": "20220331",
-    "url": "https://staticcdn.duckduckgo.com/trackerblocking/v2.1/tds-1869fe596d5e46eda31ea442ab178b96.json"
-},  {
-    "date": "20220216",
-    "url": "https://staticcdn.duckduckgo.com/trackerblocking/v2.1/tds-5d1529d9f4ecc308bca8c2bfa9ad83b2.json"
-},  {
-    "date": "20211214",
-    "url": "https://staticcdn.duckduckgo.com/trackerblocking/v2.1/tds-d027f38ba2cd6c65d9891f05619c6adc.json"
-},  {
-    "date": "20211108",
-    "url": "https://staticcdn.duckduckgo.com/trackerblocking/v2.1/tds-e4246ea40ff8a0dc1476e503032a64a3.json"
-},  {
-    "date": "20210915",
-    "url": "https://staticcdn.duckduckgo.com/trackerblocking/v2.1/tds-5f58c0f35481e8aece96e4ca85b00538.json"
-},  {
-    "date": "20210811",
-    "url": "https://staticcdn.duckduckgo.com/trackerblocking/v2.1/tds-1e2aa1ad59d3c674ea1833abf6abda60.json"
-},  {
-    "date": "20210714",
-    "url": "https://staticcdn.duckduckgo.com/trackerblocking/v2.1/tds-1e2aa1ad59d3c674ea1833abf6abda60.json"
-},  {
-    "date": "20210707",
-    "url": "https://staticcdn.duckduckgo.com/trackerblocking/v2.1/tds-520779709467d498b04e1a3b4ec54074.json"
-},  {
-    "date": "20210608",
-    "url": "https://staticcdn.duckduckgo.com/trackerblocking/v2.1/tds-094756a96396c23fad18f2623c609bc2.json"
-},  {
-    "date": "20210601",
-    "url": "https://staticcdn.duckduckgo.com/trackerblocking/v2.1/tds-cc12eec848b425c5fb9a436c956476c9.json"
-}]
+[
+    {
+        "date": "20240110",
+        "url": "https://staticcdn.duckduckgo.com/trackerblocking/v6/current/extension-tds.json"
+    },
+    {
+        "date": "20230509",
+        "url": "https://staticcdn.duckduckgo.com/trackerblocking/tds/by-hash/tds-46ca3b8abe9be8ddaf960bdd8d912c76.json"
+    },
+    {
+        "date": "20230321",
+        "url": "https://staticcdn.duckduckgo.com/trackerblocking/v4/tds-d525cec13d460a81d814aea84c2722f7.json"
+    },
+    {
+        "date": "20230209",
+        "url": "https://staticcdn.duckduckgo.com/trackerblocking/v4/tds-dce178730cb2f02d125e598b5175a9d2.json"
+    },
+    {
+        "date": "20230116",
+        "url": "https://staticcdn.duckduckgo.com/trackerblocking/v3/tds-ceb6c4739f50ba075f082c4c41084690.json"
+    },
+    {
+        "date": "20220922",
+        "url": "https://staticcdn.duckduckgo.com/trackerblocking/v3/tds-26f3dfbb234cfd28a47af59b497e301c.json"
+    },
+    {
+        "date": "20220921",
+        "url": "https://staticcdn.duckduckgo.com/trackerblocking/v3/tds-52114358201666ec889a7bc5276b395a.json"
+    },
+    {
+        "date": "20220920",
+        "url": "https://staticcdn.duckduckgo.com/trackerblocking/v3/tds-cdeb8f38faa7bf799a147ad8ed98128b.json"
+    },
+    {
+        "date": "20220803",
+        "url": "https://staticcdn.duckduckgo.com/trackerblocking/v3/tds-4cb6f7deff3b482fd67708c28a2e0357.json"
+    },
+    {
+        "date": "20220630",
+        "url": "https://staticcdn.duckduckgo.com/trackerblocking/v2.1/tds-4dab34f32a36c080d8b9b1135d13335e.json"
+    },
+    {
+        "date": "20220609",
+        "url": "https://staticcdn.duckduckgo.com/trackerblocking/v2.1/tds-ceb53b2deac7d7fa24590006d805deaa.json"
+    },
+    {
+        "date": "20220525",
+        "url": "https://staticcdn.duckduckgo.com/trackerblocking/v2.1/tds-468771c374ddb7ee8bd4faa83e01050a.json"
+    },
+    {
+        "date": "20220509",
+        "url": "https://staticcdn.duckduckgo.com/trackerblocking/v2.1/tds-81825cc44f95ae42865a2d6132ecc7ae.json"
+    },
+    {
+        "date": "20220331",
+        "url": "https://staticcdn.duckduckgo.com/trackerblocking/v2.1/tds-1869fe596d5e46eda31ea442ab178b96.json"
+    },
+    {
+        "date": "20220216",
+        "url": "https://staticcdn.duckduckgo.com/trackerblocking/v2.1/tds-5d1529d9f4ecc308bca8c2bfa9ad83b2.json"
+    },
+    {
+        "date": "20211214",
+        "url": "https://staticcdn.duckduckgo.com/trackerblocking/v2.1/tds-d027f38ba2cd6c65d9891f05619c6adc.json"
+    },
+    {
+        "date": "20211108",
+        "url": "https://staticcdn.duckduckgo.com/trackerblocking/v2.1/tds-e4246ea40ff8a0dc1476e503032a64a3.json"
+    },
+    {
+        "date": "20210915",
+        "url": "https://staticcdn.duckduckgo.com/trackerblocking/v2.1/tds-5f58c0f35481e8aece96e4ca85b00538.json"
+    },
+    {
+        "date": "20210811",
+        "url": "https://staticcdn.duckduckgo.com/trackerblocking/v2.1/tds-1e2aa1ad59d3c674ea1833abf6abda60.json"
+    },
+    {
+        "date": "20210714",
+        "url": "https://staticcdn.duckduckgo.com/trackerblocking/v2.1/tds-1e2aa1ad59d3c674ea1833abf6abda60.json"
+    },
+    {
+        "date": "20210707",
+        "url": "https://staticcdn.duckduckgo.com/trackerblocking/v2.1/tds-520779709467d498b04e1a3b4ec54074.json"
+    },
+    {
+        "date": "20210608",
+        "url": "https://staticcdn.duckduckgo.com/trackerblocking/v2.1/tds-094756a96396c23fad18f2623c609bc2.json"
+    },
+    {
+        "date": "20210601",
+        "url": "https://staticcdn.duckduckgo.com/trackerblocking/v2.1/tds-cc12eec848b425c5fb9a436c956476c9.json"
+    }
+]
