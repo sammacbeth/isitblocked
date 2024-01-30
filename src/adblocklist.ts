@@ -1,6 +1,13 @@
-import { FiltersEngine, Request, RequestType } from "@cliqz/adblocker";
+import { BlockingResponse, FiltersEngine, Request, RequestType } from "@cliqz/adblocker";
 import fetch from "node-fetch";
 import IBlocklist from "./blocklist";
+
+export interface MatchDetails {
+  match: boolean;
+  redirect?: boolean;
+  exception?: string;
+  filter?: string;
+}
 
 export default class AdblockerList implements IBlocklist {
   engine: FiltersEngine = null;
@@ -18,18 +25,22 @@ export default class AdblockerList implements IBlocklist {
     this.engine = FiltersEngine.deserialize(buf);
   }
 
-  match(url: string, sourceUrl: string, type: RequestType): { match: boolean; info: string } {
-    const { match: isMatch, filter } = this.engine.match(
+  match(url: string, sourceUrl: string, type: RequestType): { match: boolean; info: MatchDetails } {
+    const details = this.engine.match(
       Request.fromRawDetails({
         url,
         sourceUrl,
         type,
       })
     );
-    const info = isMatch && `Filter match: ${filter.hostname || ''}${filter.filter || ''}`;
     return {
-      match: isMatch,
-      info
+      match: details.match,
+      info: {
+        match: details.match,
+        redirect: !!details.redirect,
+        exception: details.exception?.toString(),
+        filter: details.exception?.toString()
+      }
     };
   }
 }
