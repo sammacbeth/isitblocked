@@ -1,7 +1,11 @@
 [
     {
-        "date": "20230509",
+        "date": "20240110",
         "url": "https://staticcdn.duckduckgo.com/trackerblocking/v6/current/extension-tds.json"
+    },
+    {
+        "date": "20230509",
+        "url": "https://staticcdn.duckduckgo.com/trackerblocking/tds/by-hash/tds-46ca3b8abe9be8ddaf960bdd8d912c76.json"
     },
     {
         "date": "20230321",
