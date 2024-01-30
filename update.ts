@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 import fs from 'fs'
 import { createHash } from 'crypto'
-import { BlocklistVersion, getVersions, getVersionsFilePath } from './src/versions';
+import { getVersions, getVersionsFilePath } from './src/versions';
 
 const currentDateString = new Date().toISOString().slice(0, 10).replace(/-/g, '');
 
