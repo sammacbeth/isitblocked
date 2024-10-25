@@ -1,8 +1,8 @@
-import fetch from "node-fetch";
 import * as tldts from "tldts-experimental";
 import { Trackers } from "@duckduckgo/privacy-grade";
 import IBlocklist from "./blocklist";
 import { RequestType } from "@cliqz/adblocker";
+import { fetchLocalOrRemote } from "./fetch";
 
 export default class DuckDuckGoBlocking implements IBlocklist {
   name = "DuckDuckGo";
@@ -10,7 +10,7 @@ export default class DuckDuckGoBlocking implements IBlocklist {
   engineData: string;
 
   constructor(
-      private tdsUrl = "https://staticcdn.duckduckgo.com/trackerblocking/v3/tds.json", 
+      private tdsUrl = "https://staticcdn.duckduckgo.com/trackerblocking/v3/tds.json",
       private surrogatesUrl = "https://duckduckgo.com/contentblocking.js?l=surrogates") {
     this.engine = new Trackers({
       tldjs: tldts,
@@ -35,9 +35,9 @@ export default class DuckDuckGoBlocking implements IBlocklist {
   }
   async fetch(): Promise<void> {
     const tds = await (
-      await fetch(this.tdsUrl)
+      await fetchLocalOrRemote(this.tdsUrl)
     ).json();
-    const surrogates = await (await fetch(this.surrogatesUrl)).text();
+    const surrogates = await (await fetchLocalOrRemote(this.surrogatesUrl)).text();
     this.engineData = JSON.stringify([
       { name: "tds", data: tds },
       { name: "surrogates", data: surrogates },

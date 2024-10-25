@@ -1,5 +1,5 @@
 import { BlockingResponse, FiltersEngine, Request, RequestType } from "@cliqz/adblocker";
-import fetch from "node-fetch";
+import { fetchLocalOrRemote } from "./fetch";
 import IBlocklist from "./blocklist";
 
 export interface MatchDetails {
@@ -18,7 +18,7 @@ export default class AdblockerList implements IBlocklist {
   }
 
   async fetch(): Promise<void> {
-    this.engine = await FiltersEngine.fromLists(fetch, this.lists);
+    this.engine = await FiltersEngine.fromLists(fetchLocalOrRemote, this.lists);
   }
 
   async deserialize(buf: Uint8Array): Promise<void> {
