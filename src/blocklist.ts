@@ -1,4 +1,4 @@
-import { RequestType } from "@cliqz/adblocker";
+import { RequestType } from "@ghostery/adblocker";
 
 export default interface IBlocklist {
   name: string;

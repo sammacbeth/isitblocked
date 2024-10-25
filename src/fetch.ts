@@ -1,4 +1,4 @@
-import { Fetch } from "@cliqz/adblocker";
+import { Fetch } from "@ghostery/adblocker";
 import fetch from "node-fetch";
 import fs from 'fs/promises'
 

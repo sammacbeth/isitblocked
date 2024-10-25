@@ -1,4 +1,4 @@
-import { BlockingResponse, FiltersEngine, Request, RequestType } from "@cliqz/adblocker";
+import { FiltersEngine, Request, RequestType } from "@ghostery/adblocker";
 import { fetchLocalOrRemote } from "./fetch";
 import IBlocklist from "./blocklist";
 

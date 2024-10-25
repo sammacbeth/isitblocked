@@ -1,7 +1,7 @@
 import * as tldts from "tldts-experimental";
 import { Trackers } from "@duckduckgo/privacy-grade";
 import IBlocklist from "./blocklist";
-import { RequestType } from "@cliqz/adblocker";
+import { RequestType } from "@ghostery/adblocker";
 import { fetchLocalOrRemote } from "./fetch";
 
 export default class DuckDuckGoBlocking implements IBlocklist {
