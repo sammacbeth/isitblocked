@@ -1,12 +1,32 @@
-import { FiltersEngine, Request, RequestType } from "@ghostery/adblocker";
+import { BlockingResponse, FiltersEngine, Request, RequestType } from "@ghostery/adblocker";
 import { fetchLocalOrRemote } from "./fetch";
 import IBlocklist from "./blocklist";
 
-export interface MatchDetails {
+export class MatchDetails {
   match: boolean;
   redirect?: boolean;
   exception?: string;
   filter?: string;
+
+  constructor(response: BlockingResponse) {
+    this.match = response.match
+    this.redirect = !!response.redirect
+    this.exception = response.exception?.toString()
+    this.filter = response.filter?.toString()
+  }
+
+  toString() {
+    if (this.redirect) {
+      return `Redirect: ${this.filter}`
+    }
+    if (this.exception) {
+      return `Filter exception: ${this.exception}`
+    }
+    if (this.filter) {
+      return `Filter match: ${this.filter}`
+    }
+    return 'No match'
+  }
 }
 
 export default class AdblockerList implements IBlocklist {
@@ -35,12 +55,7 @@ export default class AdblockerList implements IBlocklist {
     );
     return {
       match: details.match,
-      info: {
-        match: details.match,
-        redirect: !!details.redirect,
-        exception: details.exception?.toString(),
-        filter: details.exception?.toString()
-      }
+      info: new MatchDetails(details)
     };
   }
 }
