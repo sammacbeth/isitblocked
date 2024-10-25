@@ -1,4 +1,4 @@
-import { FiltersEngine } from "@cliqz/adblocker";
+import { FiltersEngine } from "@ghostery/adblocker";
 import fetch from "node-fetch";
 import AdblockerList from "./adblocklist";
 

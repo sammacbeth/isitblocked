@@ -3,7 +3,7 @@
     "declaration": true,
     "target": "ES2021",
     "module": "Node16",
-    "moduleResolution": "node",
+    "moduleResolution": "Node16",
     "sourceMap": true,
     "typeRoots": ["node_modules/@types"],
     "outDir": "build",
