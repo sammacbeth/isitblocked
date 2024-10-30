@@ -125,6 +125,8 @@ export default class DuckDuckGoBlocking implements IBlocklist {
           trackerData.trackerAllowlist = true;
           trackerData.toString = () => `tracker-allowlist: ${allowlistMatch.rule}`;
         }
+      } else if (trackerData.action !== 'block' && trackerData.action !== 'redirect') {
+        match = false;
       }
       if (!trackerData.trackerAllowlist) {
         trackerData.toString = () => `${trackerData.action}: ${trackerData.reason}`;

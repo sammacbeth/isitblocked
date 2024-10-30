@@ -33,4 +33,14 @@ describe('DDG Blocking Tests', () => {
         expect(result.match).to.be.true
         expect(result.info.trackerAllowlist).to.be.false
     })
+
+    it('action: none is not a match', () => {
+        const result = ddg.match("https://0.gravatar.com/avatar/", "https://example.com/", 'image');
+        expect(result.match).to.be.false
+    })
+
+    it('action: ignore is not a match', () => {
+        const result = ddg.match("https://123.hp.com/", "https://123.hp.com/", 'document');
+        expect(result.match).to.be.false
+    })
 })
