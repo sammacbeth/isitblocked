@@ -43,4 +43,11 @@ describe('DDG Blocking Tests', () => {
         const result = ddg.match("https://123.hp.com/", "https://123.hp.com/", 'document');
         expect(result.match).to.be.false
     })
+
+    it('tracker-allowlist is loaded from serialized engine', async () => {
+        expect(Object.keys(ddg.allowlist).length).to.be.greaterThan(1)
+        const reserializedEngine = new DuckDuckGoBlocking()
+        await reserializedEngine.deserialize(await ddg.serialize())
+        expect(Object.keys(reserializedEngine.allowlist).length).to.be.greaterThan(1)
+    })
 })
