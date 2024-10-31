@@ -105,7 +105,7 @@ export default class DuckDuckGoBlocking implements IBlocklist {
     this.engineData = Buffer.from(buf).toString("utf-8");
     const parsedData = JSON.parse(this.engineData)
     this.engine.setLists(parsedData);
-    this.allowlist = parsedData.find(l => l.name === "config")?.features?.trackerAllowlist?.settings?.allowlistedTrackers || {};
+    this.allowlist = parsedData.find(l => l.name === "config")?.data.features?.trackerAllowlist?.settings?.allowlistedTrackers || {};
   }
 
   match(
